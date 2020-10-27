@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anurag Shukla</title>
+    <link rel="stylesheet" href="CSS/styles.css" type="text/css">
+    <link rel="icon" href="./images/195ba0203f48babe2668b1a4e447ba36.ico/ms-icon-150x150.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
+    <script>
+        var TxtRotate = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 0;
+        }
+
+        setTimeout(function() {
+            that.tick();
+        }, delta);
+        };
+
+        window.onload = function() {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-rotate');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+        document.body.appendChild(css);
+        };
+    </script>
+
+
+
+</head>
+<body>
+    <div class = "top-section">
+        <h1>I'm Anurag</h1>
+        <h2>a
+            <span
+               class="txt-rotate"
+               data-period="2000"
+               data-rotate='[ " Programmer", " Researcher", " Anime Lover", " Physics Aficionado", " Footballer" ]'></span>
+          </h2>
+        <!-- <h2>A <span class="underline">Pro</span>grammer.</h2> -->
+    </div>
+    <!-- <img class="top-bg-image" src="images/mountain.svg" /> -->
+    <div class="middle-container">
+        <div class="profile">
+          <img src="./images/195ba0203f48babe2668b1a4e447ba36.ico/ms-icon-150x150.png" alt="">
+          <h2>Hello.</h2>
+          <p>Nice to have you here. My name is Anurag Shukla, a final year computer science undergraduate at IIIT NR, an aspiring software engineer, programmer and physics lover. I speak in Python, Java, C and sometimes C++. Python being my mother tongue and yes, I also speak English and Hindi.</p>
+        </div>
+        
+        <hr>
+        
+        <div class="skills">
+          <h2>My Skills.</h2>
+          <div class="skill-row">
+            <img class="skill-image img-left" src="https://www.flaticon.com/svg/static/icons/svg/1069/1069893.svg" alt="">
+            <h3>Android</h3>
+            <p>Native Android Development is one of my key skills. 
+                I develop mobile apps for android using Java. Adivasi Radio, one of my most successful projects which was made to make Gondi media accessible to Gond Community
+                now also incorporates translation data collection to develop first ever NMT tool for Gondi.</p>
+          </div>
+          <div class="skill-row">
+            <img class="skill-image img-right" src="https://www.flaticon.com/svg/static/icons/svg/103/103080.svg" alt="">
+            <h3>Competetive Programming</h3>
+            <p>I love the sport as much as I love data structures and algorithm. Being two time ICPC regionalist and having participated at many prestegious competetions, 
+                I always thrive to achieve more and be better if not best in it.</p>
+          </div>
+          <div class="skill-row">
+            <img class="skill-image img-left" src="https://www.flaticon.com/svg/static/icons/svg/2103/2103832.svg" alt="">
+            <h3>Deep Learning</h3>
+            <p>My love of Maths makes Deep Learning special to me. 
+                Most of my projects are in the field of Natural Language Processing and Computer Vision.
+            With a unique experience mix of Research and development I always try to implement my deep learning projects end to end with a user interface.
+            My curiousity always makes me to look into the working of these awesome algorithms and sometimes come up with my own but I am always overwhelmed by all the genius and innovation this field has.</p>
+          </div>
+          <div class="skill-row">
+            <img class="skill-image img-right" src="https://www.flaticon.com/svg/static/icons/svg/3094/3094464.svg" alt="">
+            <h3>Web Development</h3>
+            <p>I am full stack web developer. I am proficient in back end development with Django. Frontend Development is my recent skill and I am still learning a lot and excited to apply these skills in real world projects.</p>
+          </div>
+        </div>
+        
+        <div class="experience">
+            <h2 class="white">Experience</h2>
+            <div class="timeline">
+                <div class="container left">
+                  <div class="content">
+                    <img class="timeline-image" src="https://www.flaticon.com/svg/static/icons/svg/732/732221.svg" alt="Microsoft Logo" />
+                    <p class="timeline-org">Microsoft</p>
+                    <p class="timeline-designation">Research Intern</p>
+                    <p class="timeline-period">May 2020 - Aug 2020</p>
+
+                    <ul class="timeline-description">
+                        <li>In charge of design and development of Interactive Neural Machine Translation-lite (INMT-lite), a framework to train and develop
+                            lite versions of models using tflite for neural machine translation (NMT) that can be run on embedded devices like mobile phones
+                            and tablets that have low computation power and space.</li>
+                        <li>Developed Translation engine APIs for INMT web and created an android client application.</li>
+                        <li> Worked with IDC Bangalore team to develop CovidSafeRoutes, an android application that find alternative paths between two
+                            points on map and suggests the safest route from covid-19 contamination.</li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="container right">
+                  <div class="content">
+                    <img class="timeline-image" src="https://www.engineeringforchange.org/wp-content/uploads/2017/07/Captura_de_pantalla_2017-08-03_a_las_17.52.44.png" alt="CGNet Logo" />
+                    <p class="timeline-org">CGNet Swara</p>
+                    <p class="timeline-designation">Software Development Engineer Intern</p>
+                    <p class="timeline-period">Dec 2019 - Apr 2020</p>
+
+                    <ul class="timeline-description">
+                        <li>Integrated data collection interface for collecting Hindi-Gondi translation data in Adivasi Radio, an android application for data
+                            collection and information retrieval for Gondi Community.</li>
+                        <li>Developed several email and API based tracking mechanisms for supervision of data collection activity and maintenance.</li>
+                        <li>Upgraded the data collection interface to work in offline mode because of poor internet connectivity of users.</li>
+                        <li>Managed flexible admin interface and API, server backend, offline access, database and caching, deployment, testing, marketing
+                            and maintenance of several web and android applications.</li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                      <img class="timeline-image" src="data:image/jpeg;base64,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" alt="Microsoft Logo" />
+                      <p class="timeline-org">TSoC (The Society Of Coders)</p>
+                      <p class="timeline-designation">Co-Founder and Vice Secretary </p>
+                      <p class="timeline-period">2018-Present</p>
+  
+                      <p class="timeline-description">
+                        Co-founded the first coder’s club at IIIT-NR, organized various hackathons and events to promote competitive programming among
+                        the students, and improve the coding environment of the Institute.
+                      </p>
+  
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                      <img class="timeline-image" src="https://i.pinimg.com/originals/c5/d9/fc/c5d9fc1e18bcf039f464c2ab6cfb3eb6.jpg" alt="Codechef Logo" />
+                      <p class="timeline-org">Codechef</p>
+                      <p class="timeline-designation">Campus Chapter Head</p>
+                      <p class="timeline-period">2018 - Present</p>
+  
+                      <p class="timeline-description">
+                        Head and representative of IIIT-NR Codechef Campus Chapter. Responsibility includes organisation, successful conduct and problem
+                        curation for all coding competitions in college.                        
+                      </p>
+  
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+        <div class="education">
+            <h2>Education</h2>
+            <div class="education-row">
+                <img class = "education-img" src="https://www.iiitnr.ac.in/sites/all/themes/iiit/120res.png" alt="IIIT-NR Logo">
+                <div class="education-description left-align">
+                    <p class="education-org">International Institute of Information Technology, Naya Raipur (IIIT-NR)</p>
+                    <p class="education-type">Bachelor of Technology, Computer Science, 9.22 CGPA</p>
+                    <p class="education-period">2017-2018</p>
+                </div>
+            </div>
+
+            <div class="education-row">
+                <img class = "education-img" src="https://www.flaticon.com/svg/static/icons/svg/864/864102.svg" alt="IIIT-NR Logo">
+                <div class="education-description left-align">
+                    <p class="education-org">St. Marks Public School</p>
+                    <p class="education-type">PCM, 89.4 %</p>
+                    <p class="education-period">2015-2017</p>
+                </div>
+                
+            </div>
+
+            <div class="education-row">
+                <img class = "education-img" src="https://www.stfrancissikandra.org/images/logo-sfcs.png" alt="IIIT-NR Logo">
+                <div class="education-description left-align">
+                    <p class="education-org">St. Francis Convent School</p>
+                    <p class="education-type">9.8 CGPA</p>
+                    <p class="education-period">High School - 2015</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="contact-me">
+          <h2 class="cyan-color">Get In Touch</h2>
+          <h3 class="cyan-color">Want to hire me, discuss a project or just a quick chat?</h3>
+          <a class="BUTTON_KYR" href="mailto:shukla.anurag0006@gmail.com">MAIL ME</a>
+          <a class="BUTTON_KYR" href="./resources/Anurag_Shukla_Resume.pdf">DOWNLOAD CV</a>
+        </div>
+      </div>
+      
+      <hr>
+      <div class="bottom-container">
+          <a href="https://www.linkedin.com/in/anurag-shukla-a2090514a/"><img class="contact-icon" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111532.svg" alt="Linked In Profile" /></a>
+          <a href="https://twitter.com/techieShukla"><img class="contact-icon" src="https://www.flaticon.com/svg/static/icons/svg/733/733635.svg" alt="Twitter Profile" /></a>
+          <a href="https://codeforces.com/profile/adivannik"><img class="contact-icon" src="https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/codeforces-512.png" alt="Codeforces Profile" /></a>
+          <a href="https://www.codechef.com/users/shukla_anurag"><img class="contact-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX///8AAAD8/Pzu7u7c3Nz4+Pjr6+vx8fHj4+PMzMz09PTg4OCmpqZ9fX3m5ubQ0NC7u7uVlZXFxcVZWVlRUVFvb2+Li4tHR0deXl54eHiFhYVlZWWgoKBqamogICBTU1Ovr683NzdBQUErKysdHR00NDS/v78ODg6jo6OZmZlEREQMDAweHh4WFhaknouPAAANm0lEQVR4nO1d2WKjuBIVeI/3fU/Aduyke/z/v3cRi5BEAbJdJejcnKcZt2M4SKq9Csao0Z+s9qe74ziXz81wdbj2Rm/k17SHjrdxANz8/dQb//tEW94fiJ6ExdBrdqq+zafRXJbQS/C+/Bq7Vd/t4/A+DfnFOO0m7arv+QF0psmNz3cPsLxt/xGW/a245xl7cCmd825W9x3b+0hvd8w+8rnkYzEYVc0iH54v3anHJs8QDJdyNa6aCoTmVrnLOWOXZxly7GpGsnHwtTtss94rBAPcV82qaSXoeOvsEjC2f5FhgPNXDSyC0QE0Xdqs9TpBjn2vSnbubHeG72vDnpczOs6DijRIx5vn39WMsSMWwwCrCjbrpFjXBU8dkWCAoV17px1ZY8dcWXIMlAcuQ8fZ2lvHt1jxXRjLytAIHmMDbIbBXrV0Hg/iio1cGl3cYyjgWeDXOaXX67FRzp0EX3zU6DaDT24EjOXLHRh7B+9jwbC0YRY7iwS50puCd7ENnCgqhs475TLqmzJPYn4xNiNj6DjfdAx1AyZ4mjfoFiaBI0XI0JlTCdVMTCJYKzDgNM7bvlh4p9H/WW9onmN9doGngQyKw+gC13FZA7r8iLEhMUMKitA9j7Nnk6NjgSE+RVC5r+Dt2LDB0MG2U0GRcobVgkstaUJ84hJ8g6/SYR3gU5fE8M5gicrwAF8k0Hx+9tOA4ZWSWoIZJsMTfI3gMa6yn7q0No1yISwESgG0Xu4gl45uwVJhisfQ48sF7dQupCc7OaIXHy00hsPQgAFivFfI0W/nSiZsHNAYcn+2AcmPYJ98Zz4cEfqHKt6xCIY7MVjELBsw5hTYpexugZ+DZ9m0w18LVANbaFe4MSBuyMPUPjm5EFiyJl4mxrKWtguYO1fgURDhLxLDWCMMWHaf9oHT6bEcK48AExyGMYfwgWlXuAJSBXoSVDjhMEy0On9gmlbk8lrXF/xw2DBMQ+DImkRc+iyj6bj5qzsSW2bJMOUYojBsJz8XnDrthC1Y1hLYMIK8RS5QGArLbJXhE1imGQ+Ks7ZktjlhoAEBSYw+tCHUC7iZT6BvEQInfCrqLPry/4TgJ11Ps1lluEFhKCQjf2CqEOFuqC5quMmf41Hiw0dhKOQGVz+qNOXKT4+aZgUSIZCsb/F7fHmU6osdywpObpgCvj8N1jgMhZk5029+z7LeoMeIMxcykAJSwgjL6Iszy8bDuVFjTeUPcBiKuMspQ4j/syZWuJ1Bl0HUgOUiih/kB9GXrxD4/kwrreFHAwqkUuCORJCJqnt+EJVQflf/IBZvYHAOH2hpb6ER+UFUtAOnrIfheKuBb4GeE2kmFAg788Q0o9PTKTthLIqBvRboQMxeiLILfhDlHcgFpx4AzugUMiBJUg5x1LgtL0uWI8sKTo/lpjqQgRcTTpUg9+plQ5T7Snogg6sLK6mLLR7BVF/wuKmszi/yP0rfseIDo8kZDlGpFvx3V74KwJB/BiX+sbHAJJjKy67GiAtOvYytBbAmAGoGMTWv9dg3Fz26amgyG0HhMyrB9I65FSEbMZyx7g16wGf4QAoHCyRmDdf5sm/E/X699oI/BXJ1gb2EqSXTUgUlVw16HIPb3mjV+nnAXsK0Omis+rxcoOkhbp4AoFYXaMnDFIkbzC2ld/VKmfVqA3kqZOAK0hCJbcbtNDmA2AI8en552iwpUnxGRbJNmXrw2oCJxu1x2oAiqjmTIHEXOiqlHnDmuN1GWtyGk5HRkfCYqXabJ+VuBBixukB0KmTEfiHfgtLFVlBUZkTrXeBrigjxNuX6QTpkR6h+5qrZ57jANbklJL68Wp/gQ44Ej+fQMaRr9Iq3aVPV8QzoLfnDqBpnnKjagwixxe2pge82RMZFaZQFQdhxkWzTrSo9x1B125isIAM1dJFBdI2/TDlkHrRcX1S29wcpwUSLB/tS6iLdQRXteyJhilUGlYf4+E2UeOgaLF0nqlAkH0UQXWaobMEbWCHUz+veewl7aoJxncJZ3YINyH7xSAIZ9C3PMZWOImpmUGH3kUKYIpZ25yK60kRREFOoQuhCYJleLBCMd95WEZ8foIXWxXfzrcyQiN15VduBDAeM/cUlSKvrE8RGdl8RNX0o/rthz40Zyoeljvwovn1Qlu1LqwWLgJ1EtDXnJIoGfygLNAdLZse4dpudPcqEt+sqdowLRUenuHabLYJJAmOi6AIPEjWfqE6wxVk80YY8qroAHAPSRkxAWdujTASzXcXs3EBic4AoaiwSTBz6WfkAkwVeeRth4AJAZG4uDVoO3rCKv+ZWCSYJDIPqPA+r+Mv21MgogTEpl5SfuXOIHsPKMsFYfswNKrv6kK3zOIhi+PmIvcFOeSHwEaU9iDJ8mIPowodsQiYDFIVofQmTkNudIhADgHh0Eoh4mzYtzL9wohol64guvX11hKcR/lRBMHEHqasRQniVMIwXb0AyeU5DRePbo4vfyMuCCLOhJYhljIVa56+KGMbS9JwzoxURJGUlJnhp1PMjqIqgtX503FFCj8DAYkMBVV2JASwNhqjwfQJ2+u8IaizNYYXhsUqGFoayobb9PA4rsqba4fo2jNJKCdpo/LEcRcwAJ5BWBLxpXs+BfvBc5e+4INf6VRMkP4n09UGlKHgFBAa8qvmRL2IN3sJCK06RJnm9BtJ4YqUmm4BBMfftvNhshwG289NDoYFG1eRCFGVn1tvBta/fZqM7+TarAMcZkPQ6csitroW+a39QXi9V6ZuQJGQDiv50bJItas2Kk4voPaLPQnOiFt4jp2dW4J/UZQmVOv3z4GHh0PJyuvgq9e5VCPt7+WSV+Qh8lUIFadFc+OEd7V6IirleJnZO0AT7PHh6ZvrqIx+rJi5NB+XT2E0xdHNfKu2ojRxFRleoj0oS21bQiLRr1cELUrjeO00nep0wq4Nb+Itf/OIXv/jFL37xf4LWdfvuONuf5SWMxiLf1xMhpnoErpEgSiUHUQH4fMejVBVWNaFjFfYndaIylGUYDezXLKZkiEYfvmleFL0O4y2XQfKN2W35/FFsDr68pqXu3xSNg58bKYoDiyekTrO4Jmn9bTOdP07CRXC0r73zz8+GTTOQZjPdd5ZIztJcGvmMEaY1u589+u3a89PrWakvb2k9OVNajk05oW2rVklvyiHs8WorSU17Eemu1gF4I9KuLTV3YrUpV29hXI8ILqJmso+lTSydwXa/G5jcSXc69+fTEoXpTtSFRLcDm0qCzy8XoklWeFGm6luJ8bovM3taE1muIif4lSz2fwbHQLqX4qfRlma4lqfmOof062fEXqiRUk3iGfyFMhyq8JvykNq/JoogPS3vaLaucgKNRLVaQuQVfFMtcTCbCuEnX8fSx7IIXZrtDLUgs2BAnj4v0ygFmfbK4Vhxkgi7G1ppyRCFVaw/8zefXi9mJCHTR47S8CUpoqWpvRTf9yop0chfmbgj5Z6YSibbNB0Yg6Ix5MpK4z+Kt1E3+fN8GRndbbA13KhKwaC6JK26xrFs5EPomybq45XpJJVE+X/XFgu3SZbd7LcdNMdGLR31zP5oLJ6xl1DNQShp+Lv9Wob7TsjeM1a3l68wdBZG9mAiIScRwaLGrFDqrtzR2mhdGuKVfXjFUm96jeTQRF+oZTFFd6PN+y7+WWQZk6CpdxusyjmqSqDIC1Gb+YuPoRDrF+y24AzHXSlH5S8Kv6l4DEWirCl8/T2Bl9/UGw6GJedcnl7uFX5THphZNLYzbQMkcn+zHIvXMR1DV6bEU/1W0M/cEpvCp+uY7erFvMWDUhMRVS4TGtEPrwuOazqMinaUUkerdb4VBzK638OdYfCv0xwVfVEs81/y8KU7UEN7GyvZCGE52mnL76kH0kIfuaght1bzrdYr069iHC/YWs1eSYXn9PObQo3pW2+z7CcLST+OsmkkkSkQxfZeOYiGwTJ3bD17mKBx9R6J6K1OqlW2+1np/dCnUvyo71o1jKBgpQwl437Tj6sDDqTiKZH5XFJRpFcqRmAt3ELDq73+mQSjKRrHcZMv4LkezaHoEFGLGnTZE6EZatFzrXq2sNGYzX7kCfzRaI1mY9C4a/Xhz/8tdL+jYO+73pzoemHs5b6cVGZ1GiN/HVoDOXusJFfl6cloJWJU+MwpXGjrpT7CoGGu1tl89uCf7ixrIXQDJ3yerbjoAz3oSVeoC4yZWGUtgNG2Jq3AoRbfqnt1DE9LiP1luAF/rwZi2mH4orK5njLihKgUB+/lznMJNWHuQJvzQEidURyerYUYEvHa+SRwh1rN74LZJaG0KZqPfZy0W6yR1gZVTS6EnKS4lMwvD0OeZbOzpBqbWszfeej1eCHDB2YS1cRAf+D1eGHe4YF3XFXwvgAID7z7IBT+DwzMtPvilVyUv6dEIPz+A8PB6mK3Gg9+ipNjvun3K50+K8N428XfN561WJu5CsC7HUGIUwUOowFQ0Th9AGZzWqUErpnCsPE+TkMYvQFCiXDnjE1SYOV9nKYof5+O3r1gMBS0Xo2ZpS9IyBSJlL69pW5+8aHwbj8AxVYybrFuBAMVkG+efsJ+rFugZRa1zNrkWG/zfD/9LeftCn4tXHsIs6P+btz5oESn9bZ37U/+s9Vn+CS61+lwczr5i/1wOukbueij63S5vgTP5nJariboAfH/AbSNuTciv4IjAAAAAElFTkSuQmCC" alt="codechef profile" /></a>
+          <a href="https://github.com/anuragshukla06"><img class="contact-icon" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111432.svg" alt="Github Profile" /></a>
+        
+        <p class="copywrite">© 2020 Anurag Shukla.</p>
+      </div>
+    
+</body>
+</html>

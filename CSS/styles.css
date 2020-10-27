@@ -1,0 +1,371 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+h1 {
+    color: #747EB2;
+    margin-top: 0;
+    padding-top: 100px;
+    font-size: 5.75rem;
+    font-family: 'Sacramento';
+    margin-bottom: 0;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.top-section {
+    background-image: url('../images/mountain.svg');
+    background-size: cover;
+    height: 100vh;
+    min-height: 700px;
+    width: 100%;
+    /* position: absolute;
+    left: 0;
+    top: 0;
+    right: 0; */
+}
+
+.middle-container {
+    line-height: 2;
+}
+
+.profile {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.experience {
+    background-color: #474e5d;
+}
+
+
+
+.top-bg-image {
+    height: auto;
+    display: block;
+}
+
+.skill-row {
+    width: 50%;
+    margin: 100px auto 100px;
+    text-align: left;
+}
+
+.skill-row p {
+    line-height: 2;
+}
+
+.skill-image {
+    width: 25%;
+}
+
+.img-left {
+    float: left;
+    margin-right: 30px;
+}
+.img-right {
+    float: right;
+    margin-left: 30px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.left-align {
+    text-align: left;
+    line-height: 1;
+}
+
+.cyan-color {
+    color: #383956;
+}
+
+/*
+######################################################################
+                        Education Section
+######################################################################
+*/
+
+.education {
+    margin-top: 50px;
+}
+
+.education-row {
+    margin: 100px 30px 0px 30px;
+    clear: both;
+}
+
+
+
+.education-img {
+    float: left;
+    margin-right: 30px;
+    width: 10%
+}
+
+.education-org {
+    font-weight: bold;
+}
+
+.education-type, .education-period {
+    font-size: 0.9rem;
+}
+
+.bottom-container {
+    background-color: ;
+    padding: 20px;
+}
+
+.copywrite {
+    margin-bottom: 0;
+    font-size: 0.75rem;
+}
+
+.white {
+  color: white;
+}
+
+.contact-icon {
+    margin: 0 20px;
+    width: 2%
+}
+
+
+
+/*
+######################################################################
+                        Contact Section
+######################################################################
+*/
+
+.contact-me {
+    clear: both;
+    margin: 30px;
+}
+
+.BUTTON_KYR {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    color: #000000;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-weight: 100;
+    padding: 0.2rem 0.75rem;
+    background-color: #FFFFFF;
+    border: solid #000000 2px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    width: 12%;
+    min-width: 150px;
+    margin: 10px 10px;
+ }
+ 
+ .BUTTON_KYR:hover {
+    background: #000000;
+    border: solid #FFFFFF 2px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+ 
+ }
+
+
+
+/*
+#######################################################################
+                        CSS FOR TIMELINE START
+#######################################################################
+*/
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+  
+  /* Container around content */
+  .container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+  
+  /* The circles on the timeline */
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  /* Place the container to the left */
+  .left {
+    left: 0;
+  }
+  
+  /* Place the container to the right */
+  .right {
+    left: 50%;
+  }
+  
+  /* Add arrows to the left container (pointing right) */
+  .left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  
+  /* Add arrows to the right container (pointing left) */
+  .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  
+  /* Fix the circle for containers on the right side */
+  .right::after {
+    left: -16px;
+  }
+  
+  /* The actual content */
+  .content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+  }
+
+  .timeline-image {
+      float: left;
+      margin-right: 25px;
+      margin-bottom: 10px;
+      width: 10%;
+  }
+
+  .timeline-org {
+      margin: 0;
+      text-align: left;
+      line-height: 1.5;
+      font-weight: bold;
+  }
+
+  .timeline-designation {
+    margin: 0;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  .timeline-period {
+      clear: left;
+      margin: 0;
+      text-align: left;
+      font-style: italic;
+      font-size: 0.75rem;
+  }
+
+  .timeline-description {
+      line-height: 1.5;
+      margin: 0;
+      text-align: left;
+      font-size: 0.85rem;
+  }
+
+  .timeline-description li {
+      margin: 10px 0;
+  }
+
+  
+  /* Media queries - Responsive timeline on screens less than 600px wide */
+  @media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+    .timeline::after {
+      left: 31px;
+    }
+  
+  /* Full-width containers */
+    .container {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+  
+  /* Make sure that all arrows are pointing leftwards */
+    .container::before {
+      left: 60px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+  
+  /* Make sure all circles are at the same spot */
+    .left::after, .right::after {
+      left: 15px;
+    }
+  
+  /* Make all right containers behave like the left ones */
+    .right {
+      left: 0%;
+    }
+  }
+
+
+/*
+#######################################################################
+                        CSS FOR TIMELINE END
+#######################################################################
+*/
+
+
+
